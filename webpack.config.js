@@ -5,8 +5,9 @@ module.exports = {
     'bundle': path.resolve(__dirname, 'src/main.js')
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js'
+    path: path.join(__dirname, 'www'),
+    filename: './bundle.js',
+    publicPath: '/dist'
   },
   devServer: {
     port: 3000
