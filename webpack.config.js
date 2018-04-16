@@ -1,9 +1,28 @@
 const path = require('path')
 
 module.exports = {
-  devtool: 'source-map',
-  context: path.join(__dirname, 'src'),
-  entry: [
-    './main.js'
-  ]
+  entry: {
+    'bundle': path.resolve(__dirname, 'src/main.js')
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].js'
+  },
+  devServer: {
+    port: 3000
+  },
+  devtool: 'eval-source-map',
+  module: {
+    rules: [
+      {
+        // test: que tipo de archivo quiero reconocer,
+        // use: que loader se va a encargar del archivo
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
 }
